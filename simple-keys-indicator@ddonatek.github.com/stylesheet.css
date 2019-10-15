@@ -1,0 +1,13 @@
+.status-label {
+	margin: 3px 3px 3px 0;
+	padding: 0 4px;
+	border: 1px solid rgb(204, 204, 204);
+	border-radius: 5px;
+	color: rgb(204, 204, 204);
+	font-weight: bold;
+}
+
+.status-label.status-off {
+	border: 1px solid rgba(160, 159, 156, 0.4);
+	color: rgba(160, 159, 156, 0.4);
+}
