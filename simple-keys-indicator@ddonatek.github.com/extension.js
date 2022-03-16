@@ -2,8 +2,10 @@
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const Gdk = imports.gi.Gdk;
+const Clutter = imports.gi.Clutter;
 
-const Keymap = Gdk.Keymap.get_default();
+const Keymap = Gdk.Keymap.get_default()
+	|| Clutter.get_default_backend().get_default_seat().get_keymap();
 
 let numLock, capsLock;
 
