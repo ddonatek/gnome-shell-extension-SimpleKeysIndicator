@@ -2,7 +2,7 @@
 	"uuid": "simple-keys-indicator@ddonatek.github.com",
 	"name": "Simple Keys Indicator",
 	"description": "Display Num Lock and Caps Lock status on the panel",
-	"shell-version": ["3.32", "40", "41", "42", "43"],
+	"shell-version": ["44"],
 	"url": "https://github.com/ddonatek/gnome-shell-extension-SimpleKeysIndicator",
-	"version": "4"
+	"version": "5"
 }
