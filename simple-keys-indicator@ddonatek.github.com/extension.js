@@ -1,8 +1,7 @@
-
-const St = imports.gi.St;
-const Main = imports.ui.main;
-const Gdk = imports.gi.Gdk;
-const Clutter = imports.gi.Clutter;
+import St from "gi://St";
+import Gdk from "gi://Gdk";
+import Clutter from "gi://Clutter"
+import * as Main from "resource:///org/gnome/shell/ui/main.js";
 
 const Keymap = Clutter.get_default_backend().get_default_seat().get_keymap();
 
@@ -22,25 +21,27 @@ function keyStatusChanged() {
 	}
 }
 
-function init() {
-	numLock = new St.Label({
-		style_class: "status-label",
-		text: "1"
-	});
-	capsLock = new St.Label({
-		style_class: "status-label",
-		text: "A"
-	});
-	Keymap.connect("state_changed", keyStatusChanged);
-}
+export default class SimpleKeysIndicatorExtension {
+	constructor() {
+		numLock = new St.Label({
+			style_class: "status-label",
+			text: "1"
+		});
+		capsLock = new St.Label({
+			style_class: "status-label",
+			text: "A"
+		});
+		Keymap.connect("state_changed", keyStatusChanged);
+	}
 
-function enable() {
-	Main.panel._rightBox.insert_child_at_index(capsLock, 0);
-	Main.panel._rightBox.insert_child_at_index(numLock, 0);
-	keyStatusChanged();
-}
+	enable() {
+		Main.panel._rightBox.insert_child_at_index(capsLock, 0);
+		Main.panel._rightBox.insert_child_at_index(numLock, 0);
+		keyStatusChanged();
+	}
 
-function disable() {
-	Main.panel._rightBox.remove_child(numLock, 0);
-	Main.panel._rightBox.remove_child(capsLock, 0);
+	disable() {
+		Main.panel._rightBox.remove_child(numLock);
+		Main.panel._rightBox.remove_child(capsLock);
+	}
 }
